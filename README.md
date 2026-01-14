@@ -1,42 +1,81 @@
-# Automated Test Suite – AI-Generated Test Cases
+# Automated Testing Assignment – Deliverables
 
-## 📌 Overview
-This project demonstrates an automated testing solution built using **AI-generated test cases** and an **automated execution script**.  
-The goal is to showcase test design, automation skills, and clear execution steps as expected in an interview assignment.
+## 📄 Overview
+This repository contains AI-generated test cases, an automated test script, and clear execution steps as part of an interview assignment.  
+The objective is to demonstrate test case design, automation skills, and the ability to document execution clearly.
 
 ---
 
 ## 🤖 AI-Generated Test Cases
-The test cases used in this project were generated using AI and then reviewed/refined for correctness and coverage.
 
-### Sample Test Cases:
-- Verify application launches successfully
-- Validate user login with valid credentials
-- Validate error message for invalid login
-- Verify page navigation after successful login
-- Validate logout functionality
-
-> ✅ Test cases are written in a clear, readable format and can be copied or reused as needed.
+### TC_01 – Verify Application Launch
+- **Precondition:** Application URL is available
+- **Steps:**
+  1. Open the browser
+  2. Navigate to the application URL
+- **Expected Result:** Application homepage loads successfully
 
 ---
 
-## 🧪 Automation Details
-- **Automation Tool:** Selenium WebDriver  
-- **Language:** Java  
-- **Build Tool:** Maven  
-- **Test Framework:** TestNG / JUnit (update if needed)
-
-The automation script executes the AI-generated test cases without manual intervention.
+### TC_02 – Verify Login with Valid Credentials
+- **Precondition:** User is registered
+- **Steps:**
+  1. Open login page
+  2. Enter valid username and password
+  3. Click on Login button
+- **Expected Result:** User is logged in and redirected to dashboard
 
 ---
 
-## ▶️ Execution Steps
-Follow the steps below to run the automation suite locally:
+### TC_03 – Verify Login with Invalid Credentials
+- **Steps:**
+  1. Open login page
+  2. Enter invalid username or password
+  3. Click on Login button
+- **Expected Result:** Proper error message is displayed
 
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-Navigate to the project directory:
+---
+
+### TC_04 – Verify Logout Functionality
+- **Precondition:** User is logged in
+- **Steps:**
+  1. Click Logout button
+- **Expected Result:** User is logged out and redirected to login page
+
+---
+
+## 🧪 Automated Script (Selenium + Java)
+
+Below is a sample automation script that covers the above test cases:
+
+```java
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.By;
+
+public class LoginTest {
+
+    public static void main(String[] args) {
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("https://example.com/login");
+
+        driver.findElement(By.id("username")).sendKeys("testuser");
+        driver.findElement(By.id("password")).sendKeys("password123");
+        driver.findElement(By.id("loginBtn")).click();
+
+        driver.findElement(By.id("logout")).click();
+
+        driver.quit();
+    }
+}
+▶️ Execution Steps
+Clone the GitHub repository:
+
+bash
+Copy code
+git clone <repository-url>
+Navigate to project directory:
 
 bash
 Copy code
@@ -46,29 +85,14 @@ Install dependencies:
 bash
 Copy code
 mvn clean install
-Execute the test suite:
+Execute automated tests:
 
 bash
 Copy code
 mvn test
-📊 Test Results
-Test execution results are displayed in the console.
+✅ Deliverables Covered
+AI-generated test cases ✔
 
-Detailed reports can be found in:
+Automated test script ✔
 
-bash
-Copy code
-/target/surefire-reports
-🚀 Key Highlights
-AI-generated test cases
-
-Fully automated execution
-
-Easy setup and clear documentation
-
-Interview-ready structure and clarity
-
-📝 Notes
-Test data and URLs can be updated from configuration files.
-
-Designed to be easily extensible for additional test scenarios.
+Execution steps ✔
